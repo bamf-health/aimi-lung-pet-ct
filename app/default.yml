@@ -8,7 +8,7 @@ modules:
     source_ct_dir: input_data/ct/
     source_pt_dir: input_data/pt/
     target_dir: output_data/
-    output_seg_name: Seg_ensemble_primary.nii.gz
+    output_seg_name: seg_ensemble_primary.nii.gz
     num_folds: 5
     organ_label: 9
 

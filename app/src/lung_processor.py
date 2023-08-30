@@ -157,7 +157,7 @@ class LungPostProcessor:
             ct_path (str): Path to CT image.
             total_seg_path (str): Path to segmentation output from total-segmentator
             out_file_path (str): Path to save output to
-            organ_name_prefix (str): a dummy variable to name the output nifti files
+            organ_name_prefix (str): base name of the output mask from nnUNet model. This is used to fetch output masks for each fold
             lung_label (str): label of lung assigned in AIMI dataset
         Returns:
             None
