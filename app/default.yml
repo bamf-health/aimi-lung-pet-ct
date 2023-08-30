@@ -1,0 +1,14 @@
+general:
+  data_base_dir: /app/data
+  version: 1.0
+  description: default configuration for Bamf NNUnet PET-CT Lung segmentation (dicom to dicom)
+
+modules:
+  NNUnetRunner:
+    source_ct_dir: input_data/ct/
+    source_pt_dir: input_data/pt/
+    target_dir: output_data/
+    output_seg_name: Seg_ensemble_primary.nii.gz
+    num_folds: 5
+    organ_label: 9
+
