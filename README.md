@@ -49,7 +49,7 @@ There is an optional `--nifti` flag that will take nifti files as input and outp
 
 #### Run inference on IDC Collections
 
-This model was run on PET/CT scans from the above mentioned IDC collections. The AI segmentations and corrections by a radioloist for 10% of the dataset are available in the kidney-ct.zip file on the [zenodo record](https://zenodo.org/record/8352041)
+This model was run on PET/CT scans from the above mentioned IDC collections. The AI segmentations and corrections by a radioloist for 10% of the dataset are available in the lung-fdg-pet-ct.zip file on the [zenodo record](https://zenodo.org/record/8352041)
 
 You can reproduce the results with the [run_on_idc_data](run_on_idc_data.ipynb) notebook on google colab.
 
