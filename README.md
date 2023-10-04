@@ -5,7 +5,7 @@ We used our FDG-PET/CT lesion segmentation model trained on [AutoPET 2023](https
 The [model_performance](model_performance.ipynb) notebook contains the code to evaluate the model performance on the following IDC collections against a validation evaluated by a radiologist and a non-expert.
 
 - [TCGA-LUAD](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=6881474)
-- [Lung PET-CT Dx5](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=70224216)
+- [Lung PET-CT Dx](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=70224216)
 - [RIDER-Lung-PET-CT](https://wiki.cancerimagingarchive.net/display/Public/RIDER+Lung+PET-CT)
 - [ACRIN-NSCLC-FDG-PET](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=39879162)
 - [TCGA-LUSC](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=16056484)
