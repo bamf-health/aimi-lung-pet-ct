@@ -1,37 +1,33 @@
-## Summary
-
-Resources to create a container that runs nnUNet model inference on AIMI collection out of the box
-
-### Running instructions
-* Create an `input_dir_ct` containing list of `dcm` files corresponding to a given series_id for CT modality
-* Create an `input_dir_pt` containing list of `dcm` files corresponding to a given series_id for PT modality 
-* Create an `output_dir` to store the output from the model. This is a shared directory mounted on container at run-time. Please assign write permissions to this dir for container to be able to write data
-* Next, pull the image from dockerhub:
-  * `docker pull bamfhealth/bamf_nnunet_pt_ct_lung:latest`
-
-* Finally, let's run the container:
-  * `docker run --gpus all -v {input_dir_ct}:/app/data/input_data/ct:ro -v {input_dir_pt}:/app/data/input_data/pt -v {output_dir}:/app/data/output_data bamfhealth/bamf_nnunet_pt_ct_lung:latest`
-* Once the job is finished, the output inference mask(s) would be available in the `{output_dir}` folder
-
-* Expected output from after successful container run is:
-  * `{output_dir}/seg_ensemble_primary.dcm` -- if nifti to dcm conversion is a success
-  * `{output_dir}/seg_lesions_ensemble.nii.gz` -- if nifti to dcm conversion is a failure
-
 # Lung PET/CT Segmentation
 
 We used our FDG-PET/CT lesion segmentation model trained on [AutoPET 2023](https://autopet.grand-challenge.org/) dataset to segment lesions for each of the five folds and ensemble the lesion segments. We then used lungs segmentation from [TotalSegmentator](https://github.com/wasserth/TotalSegmentator) to limit the predicted lesions to only those in the pulmonary and pleural area.
 
 The [model_performance](model_performance.ipynb) notebook contains the code to evaluate the model performance on the following IDC collections against a validation evaluated by a radiologist and a non-expert.
-* [TCGA-LUAD](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=6881474)
-* [Lung PET-CT Dx5](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=70224216)
-* [RIDER-Lung-PET-CT](https://wiki.cancerimagingarchive.net/display/Public/RIDER+Lung+PET-CT)
-* [ACRIN-NSCLC-FDG-PET](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=39879162)
-* [TCGA-LUSC](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=16056484)
-* [Anti-PD-1-Lung](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=41517500)
-* [NSCLC Radiogenomics](https://wiki.cancerimagingarchive.net/display/Public/NSCLC+Radiogenomics)
+
+- [TCGA-LUAD](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=6881474)
+- [Lung PET-CT Dx5](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=70224216)
+- [RIDER-Lung-PET-CT](https://wiki.cancerimagingarchive.net/display/Public/RIDER+Lung+PET-CT)
+- [ACRIN-NSCLC-FDG-PET](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=39879162)
+- [TCGA-LUSC](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=16056484)
+- [Anti-PD-1-Lung](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=41517500)
+- [NSCLC Radiogenomics](https://wiki.cancerimagingarchive.net/display/Public/NSCLC+Radiogenomics)
+
 ## Running the model
 
-#TODO
+- Create an `input_dir_ct` containing list of `dcm` files corresponding to a given series_id for CT modality
+- Create an `input_dir_pt` containing list of `dcm` files corresponding to a given series_id for PT modality
+- Create an `output_dir` to store the output from the model. This is a shared directory mounted on container at run-time. Please assign write permissions to this dir for container to be able to write data
+- Next, pull the image from dockerhub:
+
+  - `docker pull bamfhealth/bamf_nnunet_pt_ct_lung:latest`
+
+- Finally, let's run the container:
+  - `docker run --gpus all -v {input_dir_ct}:/app/data/input_data/ct:ro -v {input_dir_pt}:/app/data/input_data/pt -v {output_dir}:/app/data/output_data bamfhealth/bamf_nnunet_pt_ct_lung:latest`
+- Once the job is finished, the output inference mask(s) would be available in the `{output_dir}` folder
+
+- Expected output from after successful container run is:
+  - `{output_dir}/seg_ensemble_primary.dcm` -- if nifti to dcm conversion is a success
+  - `{output_dir}/seg_lesions_ensemble.nii.gz` -- if nifti to dcm conversion is a failure
 
 ### Build container from pretrained weights
 
